@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "c:\\Users\\ARTEM\\Documents\\Saits\\PetProjects\\vue-laravel\\worker-app\\database\\database.sqlite"
+  }
+]
