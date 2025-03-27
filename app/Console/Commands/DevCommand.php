@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Department;
 use App\Models\Position;
 use App\Models\Profile;
 use App\Models\Project;
@@ -33,9 +34,19 @@ class DevCommand extends Command
     // $this->prepareData();
     // $this->prepareManyToMany();
 
-    $project = Project::find(1);
-    $worker = Worker::find(5);
-    dd($worker->projects->pluck('title')->toArray());
+    $depart = Department::find(1);
+    // $position = Position::where('department_id', $depart->id)->where('title', 'Boss')->first();
+    // $worker = Worker::where('position_id', $position->id)->first();
+    dd($depart->Boss->toArray());
+
+
+
+    // $project = Project::find(1);
+    // $worker = Worker::find(2);
+    // $worker1 = Worker::find(3);
+    // $worker2 = Worker::find(4);
+    // $project->workers()->attach($worker->id);
+    // dd($worker->projects->pluck('title')->toArray());
     // $projectWorkers = ProjectWorker::where('project_id', $project1->id)->get();
     // $workerIds = $projectWorkers->pluck('worker_id')->toArray();
     // $workers = Worker::whereIn('id', $workerIds)->get();
@@ -52,14 +63,24 @@ class DevCommand extends Command
   }
   public function prepareData()
   {
+    $department = Department::create([
+      'title' => 'IT',
+    ]);
+    $department1 = Department::create([
+      'title' => 'Testir',
+    ]);
+
     $position1 = Position::create([
       'title' => 'Developer',
+      'department_id' => $department->id
     ]);
     $position2 = Position::create([
       'title' => 'Manager',
+      'department_id' => $department->id
     ]);
     $position3 = Position::create([
       'title' => 'Designer',
+      'department_id' => $department->id
     ]);
 
     $workerData1 = [
