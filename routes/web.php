@@ -5,7 +5,7 @@ use App\Models\Worker;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-  return view('welcome');
+  return view('index');
 });
 Route::get(uri: 'workers', action: [WorkerController::class, 'index'])->name('worker.index');
 Route::get('workers/create', [WorkerController::class, 'create'])->name('worker.create');

@@ -34,10 +34,10 @@ class DevCommand extends Command
     // $this->prepareData();
     // $this->prepareManyToMany();
 
-    $depart = Department::find(1);
+    $depart = Department::find(2);
     // $position = Position::where('department_id', $depart->id)->where('title', 'Boss')->first();
     // $worker = Worker::where('position_id', $position->id)->first();
-    dd($depart->Boss->toArray());
+    dd($depart->workers->pluck('name')->toArray());
 
 
 
