@@ -15,14 +15,14 @@ class Worker extends Model
 
   public function profile(): HasOne
   {
-    return $this->hasOne(Profile::class, 'worker_id', 'id');
+    return $this->hasOne(Profile::class);
   }
   public function position(): BelongsTo
   {
-    return $this->belongsTo(Position::class, 'position_id', 'id');
+    return $this->belongsTo(Position::class);
   }
   public function projects(): BelongsToMany
   {
-    return $this->belongsToMany(Project::class, 'project_workers', 'worker_id', 'project_id');
+    return $this->belongsToMany(Project::class);
   }
 }
