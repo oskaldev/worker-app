@@ -36,9 +36,28 @@ class DevCommand extends Command
 
     $worker = Worker::find(1);
     $client = Client::find(1);
-    $worker->avatar()->create([
-      'path' => 'worker path'
+
+    $worker->reviews()->create([
+      'text' => 'some text 1'
     ]);
+    $worker->reviews()->create([
+      'text' => 'some text 2'
+    ]);
+    $worker->reviews()->create([
+      'text' => 'some text 3'
+    ]);
+    $client->reviews()->create([
+      'text' => 'some text 1'
+    ]);
+    $client->reviews()->create([
+      'text' => 'some text 2'
+    ]);
+    $client->reviews()->create([
+      'text' => 'some text 3'
+    ]);
+    // $worker->avatar()->create([
+    //   'path' => 'worker path'
+    // ]);
     // $client->avatar()->create([
     //   'path' => 'client path'
     // ]);
@@ -46,7 +65,7 @@ class DevCommand extends Command
     // dd($avatar->avatarable->toArray());
 
     // $worker = Worker::find(1);
-    // dd($worker->profile->toArray());
+    dd($worker->reviews->toArray());
 
     // $depart = Department::find(2);
     // $position = Position::where('department_id', $depart->id)->where('title', 'Boss')->first();
@@ -75,6 +94,15 @@ class DevCommand extends Command
   }
   public function prepareData()
   {
+    Client::create([
+      'name' => 'Bob',
+    ]);
+    Client::create([
+      'name' => 'Misha',
+    ]);
+    Client::create([
+      'name' => 'Elena',
+    ]);
     $department = Department::create([
       'title' => 'IT',
     ]);
