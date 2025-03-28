@@ -32,8 +32,8 @@ class DevCommand extends Command
    */
   public function handle()
   {
-    // $this->prepareData();
-    // $this->prepareManyToMany();
+    $this->prepareData();
+    $this->prepareManyToMany();
 
     // $worker = Worker::find(1);
     // $client = Client::find(3);
