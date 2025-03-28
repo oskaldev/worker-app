@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
       ProjectSeeder::class,
       DepartmentSeeder::class,
       PositionSeeder::class,
-      WorkerSeeder::class,
+      ProfileSeeder::class,
       ProjectWorkerSeeder::class,
     ]);
   }
