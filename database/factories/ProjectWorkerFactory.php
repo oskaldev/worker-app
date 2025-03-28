@@ -19,8 +19,8 @@ class ProjectWorkerFactory extends Factory
   public function definition(): array
   {
     return [
-      'project_id' => Project::inRandomOrder()->first()->id,
-      'worker_id' => Worker::inRandomOrder()->first()->id
+      'project_id' => Project::pluck('id')->unique()->random(),
+      'worker_id' => Worker::pluck('id')->unique()->random(),
     ];
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\Worker\CreatedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,8 +16,21 @@ class Worker extends Model
   // protected $fillable = [];
   protected $guarded = false;
 
+  public static function booted()
+  {
+    static::created(callback: function (Worker $model) {
+      event(new CreatedEvent($model));
+    });
+    static::updated(callback: function (Worker $model) {
+      // event(new UpdatedEvent($model));
+      if ($model->wasChanged() && $model->getOriginal('age') != $model->getAttributes()['age']) {
+        dd('event');
+      }
+    });
+  }
   public function profile(): HasOne
   {
+
     return $this->hasOne(Profile::class);
   }
   public function position(): BelongsTo
