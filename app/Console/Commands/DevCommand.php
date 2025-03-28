@@ -35,9 +35,10 @@ class DevCommand extends Command
     // $this->prepareData();
     // $this->prepareManyToMany();
 
-    $worker = Worker::find(1);
-    $client = Client::find(3);
-
+    // $worker = Worker::find(1);
+    // $client = Client::find(3);
+    $position = Position::find(1);
+    dd($position->queryWorker->toArray());
     // $worker->tags()->attach([1, 3]);
     // $client->tags()->attach([1, 3]);
     // $tag = Tag::find(1);

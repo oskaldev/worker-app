@@ -36,6 +36,10 @@ class Worker extends Model
   }
   public function tags()
   {
-    return $this-> (Tag::class, 'taggable');
+    return $this->morphToMany(Tag::class, 'taggable');
+  }
+  public function scopeByAge($query, $age)
+  {
+    return $query->where('age', $age);
   }
 }

@@ -14,4 +14,9 @@ class Position extends Model
   {
     return $this->hasMany(Worker::class);
   }
+  
+  public function queryWorker()
+  {
+    return $this->hasOne(Worker::class)->ofMany('age', 'max');
+  }
 }
