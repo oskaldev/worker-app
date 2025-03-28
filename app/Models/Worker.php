@@ -34,4 +34,8 @@ class Worker extends Model
   {
     return $this->morphMany(Reviews::class, 'reviewable');
   }
+  public function tags()
+  {
+    return $this-> (Tag::class, 'taggable');
+  }
 }

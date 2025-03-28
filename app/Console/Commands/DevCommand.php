@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Project;
+use App\Models\Tag;
 use App\Models\Worker;
 use Illuminate\Console\Command;
 
@@ -35,26 +36,30 @@ class DevCommand extends Command
     // $this->prepareManyToMany();
 
     $worker = Worker::find(1);
-    $client = Client::find(1);
+    $client = Client::find(3);
 
-    $worker->reviews()->create([
-      'text' => 'some text 1'
-    ]);
-    $worker->reviews()->create([
-      'text' => 'some text 2'
-    ]);
-    $worker->reviews()->create([
-      'text' => 'some text 3'
-    ]);
-    $client->reviews()->create([
-      'text' => 'some text 1'
-    ]);
-    $client->reviews()->create([
-      'text' => 'some text 2'
-    ]);
-    $client->reviews()->create([
-      'text' => 'some text 3'
-    ]);
+    // $worker->tags()->attach([1, 3]);
+    // $client->tags()->attach([1, 3]);
+    // $tag = Tag::find(1);
+    // dd($tag->clients->toArray());
+    // $worker->reviews()->create([
+    //   'text' => 'some text 1'
+    // ]);
+    // $worker->reviews()->create([
+    //   'text' => 'some text 2'
+    // ]);
+    // $worker->reviews()->create([
+    //   'text' => 'some text 3'
+    // ]);
+    // $client->reviews()->create([
+    //   'text' => 'some text 1'
+    // ]);
+    // $client->reviews()->create([
+    //   'text' => 'some text 2'
+    // ]);
+    // $client->reviews()->create([
+    //   'text' => 'some text 3'
+    // ]);
     // $worker->avatar()->create([
     //   'path' => 'worker path'
     // ]);
@@ -65,7 +70,7 @@ class DevCommand extends Command
     // dd($avatar->avatarable->toArray());
 
     // $worker = Worker::find(1);
-    dd($worker->reviews->toArray());
+    // dd($worker->reviews->toArray());
 
     // $depart = Department::find(2);
     // $position = Position::where('department_id', $depart->id)->where('title', 'Boss')->first();
