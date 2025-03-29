@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\SomeJob;
 use App\Models\Avatar;
 use App\Models\Client;
 use App\Models\Department;
@@ -33,13 +34,16 @@ class DevCommand extends Command
    */
   public function handle()
   {
+
+    SomeJob::dispatch()->onQueue('some_queue');
+    SomeJob::dispatch();
     // $worker = Worker::withTrashed()->find(1);
     // $profile = Profile::find(1);
-    $worker = Worker::withTrashed()->find(1);
-    $worker->delete();
-    $worker->restore();
+    // $worker = Worker::withTrashed()->find(1);
+    // $worker->delete();
+    // $worker->restore();
     // $profile->forceDelete();
-    $worker->forceDelete();
+    // $worker->forceDelete();
     // dd($worker->toArray());
     // $worker->delete();
     // $workers = Worker::onlyTrashed()->get();
