@@ -12,8 +12,7 @@ return new class extends Migration
   public function up(): void
   {
     Schema::table('workers', function (Blueprint $table) {
-      // $table->string('hobby')->nullable();
-      // $table->renameColumn('second_name', 'surname');
+      $table->softDeletes();
     });
   }
 
@@ -23,7 +22,7 @@ return new class extends Migration
   public function down(): void
   {
     Schema::table('workers', function (Blueprint $table) {
-      $table->dropColumn('hobby');
+      $table->dropSoftDeletes();
     });
   }
 };

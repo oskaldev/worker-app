@@ -20,7 +20,7 @@ class UpdateProfileListner
   /**
    * Handle the event.
    */
-  public function handle(CreatedEvent $event)
+  public function handle($event)
   {
     Profile::update([
       'worker_id' => $event->worker->id

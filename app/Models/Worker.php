@@ -8,19 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Worker extends Model
 {
   use HasFactory;
+  use SoftDeletes;
   protected $table = 'workers';
   // protected $fillable = [];
   protected $guarded = false;
 
   public static function booted()
   {
-    // static::created(callback: function (Worker $model) {
-    //   event(new CreatedEvent($model));
-    // });
+    static::created(callback: function (Worker $model) {
+      event(new CreatedEvent($model));
+    });
     // static::updated(callback: function (Worker $model) {
     //   // event(new UpdatedEvent($model));
     //   if ($model->wasChanged() && $model->getOriginal('age') != $model->getAttributes()['age']) {

@@ -6,6 +6,7 @@ use App\Models\Avatar;
 use App\Models\Client;
 use App\Models\Department;
 use App\Models\Position;
+use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Tag;
 use App\Models\Worker;
@@ -32,10 +33,23 @@ class DevCommand extends Command
    */
   public function handle()
   {
-    $worker = Worker::find(1);
-    $worker->update([
-      'age' => '25.000'
-    ]);
+    // $worker = Worker::withTrashed()->find(1);
+    // $profile = Profile::find(1);
+    $worker = Worker::withTrashed()->find(1);
+    $worker->delete();
+    $worker->restore();
+    // $profile->forceDelete();
+    $worker->forceDelete();
+    // dd($worker->toArray());
+    // $worker->delete();
+    // $workers = Worker::onlyTrashed()->get();
+    // foreach ($workers as $worker) {
+    //   $worker->restore();
+    // }
+    // dd($workers->pluck('id')->toArray());
+    // $worker->update([
+    //   'age' => '25.000'
+    // ]);
     // $this->prepareData();
     // $this->prepareManyToMany();
 
@@ -253,30 +267,30 @@ class DevCommand extends Command
   //     $workerDesigner2->id,
   //   ]);
 
-    //   ProjectWorker::create([
-    //     'project_id' => $project1->id,
-    //     'worker_id' => $workerManager1->id
-    //   ]);
-    //   ProjectWorker::create([
-    //     'project_id' => $project1->id,
-    //     'worker_id' => $workerDeveloper->id
-    //   ]);
-    //   ProjectWorker::create([
-    //     'project_id' => $project1->id,
-    //     'worker_id' => $workerDesigner1->id
-    //   ]);
+  //   ProjectWorker::create([
+  //     'project_id' => $project1->id,
+  //     'worker_id' => $workerManager1->id
+  //   ]);
+  //   ProjectWorker::create([
+  //     'project_id' => $project1->id,
+  //     'worker_id' => $workerDeveloper->id
+  //   ]);
+  //   ProjectWorker::create([
+  //     'project_id' => $project1->id,
+  //     'worker_id' => $workerDesigner1->id
+  //   ]);
 
-    //   ProjectWorker::create([
-    //     'project_id' => $project2->id,
-    //     'worker_id' => $workerManager2->id
-    //   ]);
-    //   ProjectWorker::create([
-    //     'project_id' => $project2->id,
-    //     'worker_id' => $workerDeveloper->id
-    //   ]);
-    //   ProjectWorker::create([
-    //     'project_id' => $project2->id,
-    //     'worker_id' => $workerDesigner2->id
-    //   ]);
+  //   ProjectWorker::create([
+  //     'project_id' => $project2->id,
+  //     'worker_id' => $workerManager2->id
+  //   ]);
+  //   ProjectWorker::create([
+  //     'project_id' => $project2->id,
+  //     'worker_id' => $workerDeveloper->id
+  //   ]);
+  //   ProjectWorker::create([
+  //     'project_id' => $project2->id,
+  //     'worker_id' => $workerDesigner2->id
+  //   ]);
   // }
 }
