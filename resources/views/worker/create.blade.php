@@ -2,7 +2,7 @@
 @section('content')
 <hr>
 <div>
-  <form action="{{ route('worker.store') }}" method="post">
+  <form action="{{ route('workers.store') }}" method="post">
     @csrf
     <div style="margin: 10px;"><input type="text" name="name" placeholder="name" value="{{ old('name') }}">
       @error('name')

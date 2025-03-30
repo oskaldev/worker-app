@@ -2,7 +2,7 @@
 @section('content')
 <hr>
 <div>
-  <form action="{{ route('worker.update', $worker->id) }}" method="post">
+  <form action="{{ route('workers.update', $worker->id) }}" method="post">
     @csrf
     @method('patch')
     <div style="margin: 10px;"><input type="text" name="name" placeholder="name" value="{{old('name') ?? $worker->name }}">
@@ -20,7 +20,7 @@
         {{ $worker->is_married ? 'checked' : '' }}>
     </div>
     <div style="margin: 10px;"><input type="submit" value="Изменить"></div>
-    <div> <a href="{{ route('worker.index') }}">Вернуться на главную страницу</a></div>
+    <div> <a href="{{ route('workers.index') }}">Вернуться на главную страницу</a></div>
   </form>
 </div>
 @endsection

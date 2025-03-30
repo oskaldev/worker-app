@@ -9,10 +9,10 @@
     <div>Возраст: {{ $worker->age }}</div>
     <div>Описание: {{ $worker->description }}</div>
     <div>
-      <a href="{{ route('worker.edit', $worker->id) }}">Изменить</a>
-      <a href="{{ route('worker.index') }}">Назад</a>
+      <a href="{{ route('workers.edit', $worker->id) }}">Изменить</a>
+      <a href="{{ route('workers.index') }}">Назад</a>
       <div>
-        <form action="{{ route('worker.delete', $worker->id)  }}" method="post">
+        <form action="{{ route('workers.destroy', $worker->id)  }}" method="post">
           @csrf
           @method('delete')
           <input type="submit" value="Удалить">

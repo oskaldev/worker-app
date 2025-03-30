@@ -1,9 +1,9 @@
 @extends('layout.main')
 @section('content')
-<div><a href="{{ route('worker.create') }}">Добавить</a></div>
+<div><a href="{{ route('workers.create') }}">Добавить</a></div>
 <hr>
 <div>
-  <form action="{{ route('worker.index') }}" method="get">
+  <form action="{{ route('workers.index') }}" method="get">
     <input type="text" name="name" placeholder="name" value="{{ request()->get('name') }}">
     <input type="text" name="surname" placeholder="surname" value="{{ request()->get('surname') }}">
     <input type="text" name="email" placeholder="email" value="{{ request()->get('email') }}">
@@ -13,7 +13,7 @@
     <input id="isMarried" type="checkbox" name="is_married" {{ request()->get('is_married') == 'on' ? 'checked' : '' }}>
     <label for="isMarried">is married</label>
     <input type="submit">
-    <a href="{{ route('worker.index') }}">Сбросить</a>
+    <a href="{{ route('workers.index') }}">Сбросить</a>
   </form>
 </div>
 <hr>
@@ -27,10 +27,10 @@
     <div>Возраст: {{ $worker->age }}</div>
     <div>Описание: {{ $worker->description }}</div>
     <div>
-      <a href="{{ route('worker.show', $worker->id) }}">Просмотреть</a>
-      <a href="{{ route('worker.edit', $worker->id) }}">Изменить</a>
+      <a href="{{ route('workers.show', $worker->id) }}">Просмотреть</a>
+      <a href="{{ route('workers.edit', $worker->id) }}">Изменить</a>
       <div>
-        <form action="{{ route('worker.delete', $worker->id)  }}" method="post">
+        <form action="{{ route('workers.destroy', $worker->id)  }}" method="post">
           @csrf
           @method('delete')
           <input type="submit" value="Удалить">
