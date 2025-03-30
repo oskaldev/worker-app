@@ -28,5 +28,6 @@ class SomeJob implements ShouldQueue
     /** @var int $number */
     $number = 101;
     dump($text . ' ' . $number);
+    // dd(1111111);
   }
 }

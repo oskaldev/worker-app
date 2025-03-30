@@ -36,7 +36,7 @@ class DevCommand extends Command
   {
 
     SomeJob::dispatch()->onQueue('some_queue');
-    SomeJob::dispatch();
+    SomeJob::dispatchSync();
     // $worker = Worker::withTrashed()->find(1);
     // $profile = Profile::find(1);
     // $worker = Worker::withTrashed()->find(1);
