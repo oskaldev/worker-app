@@ -9,8 +9,11 @@
     <div>Возраст: {{ $worker->age }}</div>
     <div>Описание: {{ $worker->description }}</div>
     <div>
+      @can('update', $worker)
       <a href="{{ route('workers.edit', $worker->id) }}">Изменить</a>
+      @endcan
       <a href="{{ route('workers.index') }}">Назад</a>
+      @can('delete', $worker)
       <div>
         <form action="{{ route('workers.destroy', $worker->id)  }}" method="post">
           @csrf
@@ -18,6 +21,7 @@
           <input type="submit" value="Удалить">
         </form>
       </div>
+      @endcan
     </div>
   </div>
   <hr>
