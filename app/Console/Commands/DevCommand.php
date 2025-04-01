@@ -13,6 +13,7 @@ use App\Models\Project;
 use App\Models\Tag;
 use App\Models\Worker;
 use Illuminate\Console\Command;
+use Illuminate\Pipeline\Pipeline;
 
 class DevCommand extends Command
 {
@@ -35,10 +36,14 @@ class DevCommand extends Command
    */
   public function handle()
   {
-    $workerQuery = Worker::query();
-    $filter = new WorkerFilter(['is_married' => 'true']);
-    $filter->applyFilter($workerQuery);
-    dd($workerQuery->get()->toArray());
+    // $workers = app()->make(Pipeline::class)
+    // ->send()
+    // ->through()
+    // ->thenReturn();
+    // $workerQuery = Worker::query();
+    // $filter = new WorkerFilter(['is_married' => 'true']);
+    // $filter->applyFilter($workerQuery);
+    // dd($workerQuery->get()->toArray());
 
     // SomeJob::dispatch()->onQueue('some_queue');
     // SomeJob::dispatchSync();

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Events\Worker\CreatedEvent;
+use App\Http\Filters\Filter1\AbstractFilter;
+use App\Models\Traits\HasFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +17,7 @@ class Worker extends Model
 {
   use HasFactory;
   use SoftDeletes;
+  use HasFilter;
   protected $table = 'workers';
   // protected $fillable = [];
   protected $guarded = false;

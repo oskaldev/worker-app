@@ -4,10 +4,8 @@ namespace App\Http\Filters\Filter1;
 
 use Illuminate\Database\Eloquent\Builder;
 
-class WorkerFilter
+class WorkerFilter extends AbstractFilter
 {
-  private array $params = [];
-
   const NAME = 'name';
   const SURNAME = 'surname';
   const EMAIL = 'email';
@@ -15,15 +13,6 @@ class WorkerFilter
   const AGE_TO = 'to';
   const DESCR = 'description';
   const IS_MARRIED = 'is_married';
-
-  /**
-   * Summary of __construct
-   * @param array $params
-   */
-  public function __construct(array $params)
-  {
-    $this->params = $params;
-  }
 
   public function getCallbacks(): array
   {
@@ -36,15 +25,6 @@ class WorkerFilter
       self::DESCR => "description",
       self::IS_MARRIED => "isMarried",
     ];
-  }
-
-  public function applyFilter($builder)
-  {
-    foreach ($this->getCallbacks() as $key => $callback) {
-      if (isset($this->params[$key])) {
-        $this->$callback($builder, $this->params[$key]);
-      }
-    }
   }
 
   public function name(Builder $builder, $value)

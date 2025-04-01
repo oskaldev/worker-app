@@ -17,9 +17,9 @@ class WorkerController extends Controller
   {
     // $workers = Worker::all();
     $data = $request->validated();
-    $workerQuery = Worker::query();
     $filter = new WorkerFilter($data);
-    $filter->applyFilter($workerQuery);
+    $workerQuery = Worker::filter($filter);
+
     $workers = $workerQuery->paginate(4);
     // if (isset($data['name'])) {
     //   $workerQuery->where('name', 'like', "%{$data['name']}%");
