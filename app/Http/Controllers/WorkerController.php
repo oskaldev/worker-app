@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filters\Filter1\WorkerFilter;
 use App\Http\Requests\Worker\FilterRequest;
 use App\Http\Requests\Worker\StoreRequest;
 use App\Http\Requests\Worker\UpdateRequest;
@@ -17,28 +18,30 @@ class WorkerController extends Controller
     // $workers = Worker::all();
     $data = $request->validated();
     $workerQuery = Worker::query();
-    if (isset($data['name'])) {
-      $workerQuery->where('name', 'like', "%{$data['name']}%");
-    }
-    if (isset($data['surname'])) {
-      $workerQuery->where('surname', 'like', "%{$data['surname']}%");
-    }
-    if (isset($data['email'])) {
-      $workerQuery->where('email', 'like', "%{$data['email']}%");
-    }
-    if (isset($data['from'])) {
-      $workerQuery->where('age', '>', $data['from']);
-    }
-    if (isset($data['to'])) {
-      $workerQuery->where('age', '<', $data['to']);
-    }
-    if (isset($data['desription'])) {
-      $workerQuery->where('desription', 'like', "%{$data['desription']}%");
-    }
-    if (isset($data['is_married'])) {
-      $workerQuery->where('is_married', true);
-    }
+    $filter = new WorkerFilter($data);
+    $filter->applyFilter($workerQuery);
     $workers = $workerQuery->paginate(4);
+    // if (isset($data['name'])) {
+    //   $workerQuery->where('name', 'like', "%{$data['name']}%");
+    // }
+    // if (isset($data['surname'])) {
+    //   $workerQuery->where('surname', 'like', "%{$data['surname']}%");
+    // }
+    // if (isset($data['email'])) {
+    //   $workerQuery->where('email', 'like', "%{$data['email']}%");
+    // }
+    // if (isset($data['from'])) {
+    //   $workerQuery->where('age', '>', $data['from']);
+    // }
+    // if (isset($data['to'])) {
+    //   $workerQuery->where('age', '<', $data['to']);
+    // }
+    // if (isset($data['desription'])) {
+    //   $workerQuery->where('desription', 'like', "%{$data['desription']}%");
+    // }
+    // if (isset($data['is_married'])) {
+    //   $workerQuery->where('is_married', true);
+    // }
 
 
 

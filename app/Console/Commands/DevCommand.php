@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Filters\Filter1\WorkerFilter;
 use App\Jobs\SomeJob;
 use App\Models\Avatar;
 use App\Models\Client;
@@ -34,9 +35,13 @@ class DevCommand extends Command
    */
   public function handle()
   {
+    $workerQuery = Worker::query();
+    $filter = new WorkerFilter(['is_married' => 'true']);
+    $filter->applyFilter($workerQuery);
+    dd($workerQuery->get()->toArray());
 
-    SomeJob::dispatch()->onQueue('some_queue');
-    SomeJob::dispatchSync();
+    // SomeJob::dispatch()->onQueue('some_queue');
+    // SomeJob::dispatchSync();
     // $worker = Worker::withTrashed()->find(1);
     // $profile = Profile::find(1);
     // $worker = Worker::withTrashed()->find(1);
