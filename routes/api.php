@@ -9,3 +9,4 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth');
 
 Route::get('workers', [WorkerController::class, 'index']);
+Route::get('workers/{worker}', [WorkerController::class, 'show']);
